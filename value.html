@@ -14,9 +14,7 @@
 	</head>
 
 	<body data-spy="scroll" data-target="#myScrollspy" data-offset="170">
-	<header>
-		<h1>AOA Decision Process</h1>
-	</header>
+	
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -25,7 +23,7 @@
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 
 		<!-- Top Navigation Bar -->
-		<div class="navbar navbar-default navbar-fix" role="navigation" id="topnavbar" style="width:100%">
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation" id="topnavbar" style="width:100%">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -43,10 +41,14 @@
 						<li class="disabled"><a>Cost Model</a></li>
 						<li class="disabled"><a>Display/Calculations</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.html">Home Page</a></li>
-					</ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
 				</div><!-- /.navbar-collapse -->
+                
 			</div><!-- /.container-fluid -->
 		</div>
 		<!-- END NAVIGATION BAR -->
