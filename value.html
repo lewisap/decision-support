@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>AOA Decision Process</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="css/custom.css" rel="stylesheet">
+	</head>
+
+	<body data-spy="scroll" data-target="#myScrollspy" data-offset="170">
+	<header>
+		<h1>AOA Decision Process</h1>
+	</header>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+
+		<!-- Top Navigation Bar -->
+		<div class="navbar navbar-default navbar-fix" role="navigation" id="topnavbar" style="width:100%">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">MODA</a>
+				</div>
+				<!-- Nav Links for High Level Steps -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="value.html">Value Model<span class="sr-only">(current)</span></a></li>
+						<li class="disabled"><a>Cost Model</a></li>
+						<li class="disabled"><a>Display/Calculations</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home Page</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- END NAVIGATION BAR -->
+
+		<!-- Sidebar -->
+		<div class="span3 bs-docs-sidebar">
+			<nav id="myScrollspy">
+				<ul class="nav nav-list bs-docs-sidenav affix">
+					<li><a href="#MetricDefinition"><i class="icon-chevron-right"></i> Metric Definition</a></li>
+					<li><a href="#MetricPrioritization"><i class="icon-chevron-right"></i> Metric Prioritization</a></li>
+					<li><a href="#AlternativeDescriptions"><i class="icon-chevron-right"></i> Alternative Descriptions</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!-- END SIDEBAR -->
+
+		<div id="wrapper">
+
+			<!-- Page Content -->
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+
+							<!-- METRIC DEFINITION SECTION -->
+							<div id="MetricDefinition">
+								<h2>Metric Definition</h2>
+								<p>The objective of this step is for the decision maker to develop and/or review the metrics. Each metric will "measure" the effectiveness for each alternative.</p>
+								<p>The decision maker should define the following for each metric: the supported objective, goal of the metric, assumptions relating to the metric, considerations that provide fuller context or understanding of the metric, and the specific numerics measured by the metric.</p>
+								<p><i>For this demo, the number of metrics is fixed at 3</i>.</p><br>
+
+								<div style = "text-align: center">
+									<!--USER INPUT FOR METRIC DEFINITION -->
+									<form name="FirstMetric" id="FirstMetric" style="display: inline">
+										<b><font size="3">Metric Name:</font></b><br>
+										<input type="text" id="metric1" name="metric1" style = "text-align: center">
+										<br>
+										<br>
+										Objective:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										Goal:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										Assumptions:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										Considerations:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										<br>
+										Measure:<br>
+										<table border="1" align="center">
+										  <tr>
+											<td width = "15%"></td>
+											<td><b>Level 1</b></td>		
+											<td><b>Level 2</b></td>
+											<td><b>Level 3</b></td>		
+											<td><b>Level 4</b></td>
+											<td><b>Level 5</b></td>
+										  </tr>
+										  <tr>
+											<td><b>Score</b></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>
+										  </tr>
+										  <tr>
+											<td><b>Value</b></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>
+										  </tr>
+										</table><!--END OF FORM ONE -->
+										<br>
+										<br>
+									</form> 
+
+									<!-- SECOND FORM, will be hidden until first is saved -->
+									<form name="SecondMetric" id="SecondMetric" style="display: none">
+										<b><font size="3">Metric Name:</font></b><br>
+										<input type="text" id="metric2" name="metric2" style = "text-align: center">
+										<br>
+										<br>
+										Objective:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										Goal:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										Assumptions:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										Considerations:<br>
+										<textarea rows="4" cols="50"></textarea><br>
+										<br>
+										Measure:<br>
+										<table border="1" align="center">
+										  <tr>
+											<td width = "15%"></td>
+											<td><b>Level 1</b></td>		
+											<td><b>Level 2</b></td>
+											<td><b>Level 3</b></td>		
+											<td><b>Level 4</b></td>
+											<td><b>Level 5</b></td>
+										  </tr>
+										  <tr>
+											<td><b>Score</b></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>
+										  </tr>
+										  <tr>
+											<td><b>Value</b></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>
+										  </tr>
+										</table>
+										<br>
+										<br>
+										<br>
+										<br>
+									</form>	<!-- END OF SECOND FORM -->
+
+									<!-- THIRD FORM, will be hidden until second form is saved -->
+									<form name = "ThirdMetric" id="ThirdMetric" style="display: none">
+										<b><font size="3">Metric Name:</font></b><br>
+										<input type="text" id="metric3" name="metric3" style = "text-align: center">
+										<br>
+										<br>
+										Objective:<br>
+										<textarea rows="4" cols="50"></textarea>
+										<br>
+										Goal:<br>
+										<textarea rows="4" cols="50"></textarea>
+										<br>
+										Assumptions:<br>
+										<textarea rows="4" cols="50"></textarea>
+										<br>
+										Considerations:<br>
+										<textarea rows="4" cols="50"></textarea>
+										<br>
+										<br>
+										Measure:<br>
+										<table border="1" align="center">
+										  <tr>
+											<td width = "15%"></td>
+											<td><b>Level 1</b></td>		
+											<td><b>Level 2</b></td>
+											<td><b>Level 3</b></td>		
+											<td><b>Level 4</b></td>
+											<td><b>Level 5</b></td>
+										  </tr>
+										  <tr>
+											<td><b>Score</b></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>
+										  </tr>
+										  <tr>
+											<td><b>Value</b></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>		
+											<td><input = "text"></td>
+											<td><input = "text"></td>
+										  </tr>
+										</table>
+									
+										<br>
+										<br>
+										<br>
+									</form> <!-- END OF THIRD FORM -->
+									<!-- USER INPUT FOR METRIC DEFINITION ENDS -->
+								</div><!--centered text style tag -->
+
+								<!--Summary list of metrics will appear once each metric is saved -->
+								<h6>Summary List of Metrics</h6>
+								<ul id="summarylist"></ul>
+								<br>
+								<br>
+
+							<!-- SAVE (fills in metric names) AND RESET BUTTONS -->
+							<!-- See bottom for corresponding onclick javascript functions and JQuery code attached to the id name -->
+							<a href="#MetricDefinition"><input type="button" id="savemetrics" class="btn-sm btn-success pull-right" style="margin-right: 40px" value="Save Metric"></a>
+							<input type="reset" id="resetmetrics" class="btn-sm btn-danger pull-right" value="Reset Metric" style="margin-right: 20px">
+							<br>
+							<br>
+							<br>
+							<br>
+							</div>
+							<!-- END METRIC DEFINITION SECTION -->
+
+
+							<!-- METRIC PRIORITIZATION SECTION -->
+							<div id="MetricPrioritization" style="display: none">
+								<h2>Metric Prioritization</h2>
+								<p>The objective of this step is to assign the relative weights of the metrics. Rankings and normalized weights will be calculated based on these inputs.</p>
+								<br>
+								<form name="MetricWeights">
+
+									<!-- METRIC WEIGHT TABLE -->
+									<table border="1" align="center">
+									  <tr>
+										<td width="25%"><center><b>Metric</b></center></td>
+										<td width="25%"><center><b>Rank</b></center></td>		
+										<td><center><b>Relative Weight</b></center></td>
+										<td width="25%"><center><b>Normalized Weight</b></center></td>		
+									  </tr>
+									  <tr>
+										<td><input id="wtmetric1" style="text-align: center" placeholder="First Metric" disabled></td>
+										<td><input id="rank1" style="text-align: center" disabled></td>		
+										<td><input id="weight1" placeholder="Enter weight" style="text-align: center" onkeypress="return isNumberKey(this,event);"></td>
+										<td><input id="normweight1" style="text-align: center" disabled></td>		
+									  </tr>
+									  <tr>
+										<td><input id="wtmetric2" style="text-align: center" placeholder="Second Metric" disabled></td>
+										<td><input id="rank2" style="text-align: center" disabled></td>		
+										<td><input id="weight2" placeholder="Enter weight" style="text-align: center" onkeypress="return isNumberKey(this,event);"></td>
+										<td><input id="normweight2" style="text-align: center" disabled></td>		
+									  </tr>
+									  <tr>
+										<td><input id="wtmetric3" style="text-align: center" placeholder="Third Metric" disabled></td>
+										<td><input id="rank3" style="text-align: center" disabled></td>		
+										<td><input id="weight3" style="text-align: center" placeholder="Enter weight" onkeypress="return isNumberKey(this,event);"></td>
+										<td><input id="normweight3" style="text-align: center" disabled></td>		
+									  </tr>
+									</table>
+									<!-- END METRIC WEIGHT TABLE -->
+									<br>
+									<br>
+									<br>
+
+									<!-- SAVE AND RESET BUTTONS -->
+									<!-- Save button should calculate normalized weights,
+									rank, and display a pie chart visualization -->
+									<input id="saveweights" type="button" class="btn-sm btn-success pull-right" style="margin-right: 40px" value="Save Weights" onclick="calcNormWeights(this.form.weight1.value, this.form.weight2.value, this.form.weight3.value);">
+									<input id ="resetweights" type="button" class="btn-sm btn-danger pull-right" value="Reset Weights" style="margin-right: 20px">
+								</form>
+								<br>
+								<br>
+
+								<!-- Metric Prioritization Pie Chart (hidden until weights are saved) -->
+								<div id="container" style="height: 400px; width: 80%; margin: 0 auto"></div>
+								<br>
+								<br>
+								<br>
+								<br>
+							</div>
+							<!-- END METRIC PRIORITIZATION SECTION -->
+
+
+
+							<!-- ALTERNATIVE DESCRIPTION SECTION -->
+							<div id="AlternativeDescriptions" style="display: none">
+								<h2>Alternative Descriptions</h2>
+								<p>The objective of this step is to determine the alternatives that will be evaluated against the metrics.</p>
+								<br>
+								<form name="AltDescr">
+									<!-- ALT DESCRIPTION USER INPUT TABLE -->
+									<table border="1" align="center">
+									  <tr>
+										<td><center><b>Alternatives</b></center></td>
+										<td><b><input id="altmetric1" style="text-align: center" placeholder="First Metric" disabled></b></td>		
+										<td><b><input id="altmetric2" style="text-align: center" placeholder="Second Metric" disabled></b></td>
+										<td><b><input id="altmetric3" style="text-align: center" placeholder="Third Metric" disabled></b></td>		
+									  </tr>
+									  <tr>
+										<td><input id="alt1" name="alt1" style="text-align: center" placeholder="Alternative 1"></center></td>
+										<td><input = "text" style="text-align: center"></td>
+										<td><input = "text" style="text-align: center"></td>
+										<td><input = "text" style="text-align: center"></td>		
+									  </tr>
+									  <tr>
+										<td><input id="alt2" name="alt2" style="text-align: center" placeholder="Alternative 2"></td>
+										<td><input = "text" style="text-align: center"></td>		
+										<td><input = "text" style="text-align: center"></td>
+										<td><input = "text" style="text-align: center"></td>		
+									  </tr>
+									  <tr>
+										<td><input id="alt3" name="alt3" style="text-align: center" placeholder="Alternative 3"></td>
+										<td><input = "text" style="text-align: center"></td>		
+										<td><input = "text" style="text-align: center"></td>
+										<td><input = "text" style="text-align: center"></td>		
+									  </tr>
+									</table>
+									<!-- END USER INPUT TABLE -->
+									<br>
+									<br>
+									<br>
+
+									<!-- SAVE AND RESET BUTTONS -->
+									<input id="saveAlt" type="button" class="btn-sm btn-success pull-right" style="margin-right: 40px" value="Save Alternatives">
+									<input id="resetAlt" type="button" class="btn-sm btn-danger pull-right" value="Reset Alternatives" style="margin-right: 20px">
+								</form>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+							</div>
+							<!-- END ALTERNATIVE DESCRIPTION SECTION -->
+
+						</div> <!--col-lg-12 this is for width of content -->
+					</div> <!--row, for previous line column width -->
+				</div> <!-- container fluid -->
+
+				<!-- Button to Continue to Cost Model --> 
+				<!-- Form contains data that needs to be passed to next model -->
+				<form action = "cost.html" method = "GET">
+					<input id ="firstAltern" name ="firstAltern" style ="display: none">
+					<input id ="secondAltern" name ="secondAltern" style ="display: none">
+					<input id ="thirdAltern" name ="thirdAltern" style ="display: none">
+					<input type = "submit" class="btn btn-default pull-right" style="margin-right: 50px" value = "Finish Value Model">
+				</form>
+			</div> <!--page content wrapper (margins) -->
+
+			<!-- END PAGE CONTENT WRAPPER -->
+		</div> <!--wrapper- not sure what this is for yet -->
+
+	</body>
+	<!-- END PAGE FUNCTIONALITY -->
+
+
+
+	<!-- JS functions -->
+	<script type="text/javascript">
+
+	//Function for requiring number input for Metric Weights
+	 function isNumberKey(txt, evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+        //Check if the text already contains the . character
+        if (txt.value.indexOf('.') === -1) { return true;} 
+        else { return false;}
+    } else {
+        if (charCode > 31
+             && (charCode < 48 || charCode > 57))
+            return false;
+    }
+    return true;
+	}
+
+	//Function for calculating normalized weights and ranks for Metric Weights
+	function calcNormWeights(weight1, weight2, weight3) {
+
+		var num1 = parseFloat(document.getElementById("weight1").value);
+		var num2 = parseFloat(document.getElementById("weight2").value);
+		var num3 = parseFloat(document.getElementById("weight3").value); 
+
+		if (isNaN(num1) || isNaN(num2) || isNaN(num3)) return false; 
+
+		var total = num1 + num2 + num3; 
+
+		document.MetricWeights.normweight1.value = (num1/total).toFixed(2);
+		document.MetricWeights.normweight2.value = (num2/total).toFixed(2);
+		document.MetricWeights.normweight3.value = (num3/total).toFixed(2); 
+
+		var numbers = [num1, num2, num3];
+		var sorted = numbers.slice().sort(function(a,b){return b-a})
+		var ranks = numbers.slice().map(function(v){ return sorted.indexOf(v)+1 });
+
+		document.MetricWeights.rank1.value = ranks[0];
+		document.MetricWeights.rank2.value = ranks[1];
+		document.MetricWeights.rank3.value = ranks[2];
+	}
+
+//Below three functions will repopulate metric definition forms when summary link is clicked. Should be condensed into one function with conditional
+
+	function refill1() {
+		document.FirstMetric.style.display = 'block';
+		document.SecondMetric.style.display = 'none';
+		document.ThirdMetric.style.display = 'none';
+	}
+
+	function refill2() {
+		document.FirstMetric.style.display = 'none';
+		document.SecondMetric.style.display = 'block';
+		document.ThirdMetric.style.display = 'none';
+	}
+
+	function refill3() {
+		document.FirstMetric.style.display = 'none';
+		document.SecondMetric.style.display = 'none';
+		document.ThirdMetric.style.display = 'block';
+	}
+
+	//JQuery Functions
+	$(document).ready(function () {
+
+		//Fixes top nav bar along top
+	  $('#topnavbar').affix({
+	  	offset: {top: 0}
+	  });
+
+
+	  //Function to toggle metric definition forms and add to summary list
+		$('#savemetrics').click(function(){
+
+			//Switch between metric forms, edit summary list
+			if ($('#FirstMetric').is(":visible")) {
+				$('#wtmetric1').val($('#metric1').val());
+				$('#altmetric1').val($('#metric1').val());
+				if ($('#summarylist').children().length == 0) {
+					$('#summarylist').append("<li class='1'><a href='#MetricDefinition' onclick='refill1()'>"+$('#metric1').val()+"</a></li>");
+					$('#FirstMetric').hide();
+					$('#SecondMetric').show();
+				}
+
+				else if ($('#summarylist').children().length == 1) {
+					$('#summarylist').children("li.1").replaceWith("<li class='1'><a href='#MetricDefinition' onclick='refill1()'>"+$('#metric1').val()+"</a></li>");
+					$('#FirstMetric').hide();
+					$('#SecondMetric').show();
+				}
+
+				else {
+					$('#summarylist').children("li.1").replaceWith("<li class='1'><a href='#MetricDefinition' onclick='refill1()'>"+$('#metric1').val()+"</a></li>");
+					$('#FirstMetric').hide();
+					$('#ThirdMetric').show();
+				}
+			}
+
+			else if ($('#SecondMetric').is(":visible")) {
+				$('#wtmetric2').val($('#metric2').val());
+				$('#altmetric2').val($('#metric2').val());
+				if ($('#summarylist').children().length == 1) {
+					$('#summarylist').append("<li class='2'><a href='#MetricDefinition' onclick='refill2()'>"+$('#metric2').val()+"</a></li>");
+					$('#SecondMetric').hide();
+					$('#ThirdMetric').show();
+				}
+				else if ($('#summarylist').children().length == 2){
+	  			$('#summarylist').children("li.2").replaceWith("<li class='2'><a href='#MetricDefinition' onclick='refill2()'>"+$('#metric2').val()+"</a></li>");
+					$('#SecondMetric').hide();
+					$('#ThirdMetric').show();					
+				}	
+
+				else {
+					$('#summarylist').children("li.2").replaceWith("<li class='2'><a href='#MetricDefinition' onclick='refill2()'>"+$('#metric2').val()+"</a></li>");
+					$('#SecondMetric').hide();
+					$('#ThirdMetric').show();						
+				}			
+
+			}
+
+			//If on third form, send data to MarkLogic
+			else {
+				$('#wtmetric3').val($('#metric3').val());
+				$('#altmetric3').val($('#metric3').val());
+
+				if ($('#summarylist').children().length == 2) {
+					$('#summarylist').append("<li class='3'><a href='#' onclick='refill3()'>"+$('#metric3').val()+"</a></li>");
+				}
+
+				else {
+					$('#summarylist').children("li.3").replaceWith("<li class='3'><a href='#MetricDefinition' onclick='refill3()'>"+$('#metric3').val()+"</a></li>");
+				}
+			}
+
+			if ($('#metric1').val()!='' && $('#metric2').val()!='' && $('#metric3').val()!='') {
+				//Send to MarkLogic using AJAX call 
+				var obj = {};
+				obj.metric1 = $('#metric1').val();
+				obj.metric2 = $('#metric2').val();
+				obj.metric3 = $('#metric3').val();
+				$.ajax({
+					type: "PUT",
+					contentType: 'application/json',
+					url: "/v1/documents?uri=example.json",
+					data: JSON.stringify(obj),
+					}).done(function( msg ) {
+					alert("Your data has been saved to the server");
+					});
+
+					$('#MetricPrioritization').show();
+				}
+		});
+
+	  //Resets Metric Definitions and anything following
+	  $('#resetmetrics').click(function(){
+	  	$('#summarylist').children().remove();
+	  	$('#FirstMetric').trigger("reset");
+	  	$('#SecondMetric').trigger("reset");
+	  	$('#ThirdMetric').trigger("reset");
+	  	$('#AltDescr').trigger("reset");
+	  	$('#MetricWeights').trigger("reset");
+	  	$('#FirstMetric').show();
+	  	$('#SecondMetric').hide();
+	  	$('#ThirdMetric').hide();
+	  	$('#MetricPrioritization').hide();
+	  	$('#AlternativeDescriptions').hide();
+	  });
+
+		//Save weights code, including pie chart
+		$('#saveweights').click(function(){
+			$('#AlternativeDescriptions').show();
+			var met1, met2, met3;
+			var w1, w2, w3;
+
+			met1 = $('#metric1').val();
+			met2 = $('#metric2').val();
+			met3 = $('#metric3').val();
+			w1 = parseFloat($('#normweight1').val());
+			w2 = parseFloat($('#normweight2').val());
+			w3 = parseFloat($('#normweight3').val());
+
+	   	options = {
+	      chart: {
+	           plotBackgroundColor: null,
+	           plotBorderWidth: null,
+	           plotShadow: false,
+	           type: 'pie'
+	      },
+	       title: {
+	           text: 'Relative Metric Weights'
+	      },
+	      tooltip: {
+	          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	      },
+	      plotOptions: {
+	        pie: {
+	          allowPointSelect: true,
+	          cursor: 'pointer',
+	          dataLabels: {
+	            enabled: true,
+	            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+	            style: {
+	            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+	           	}
+	        	},
+	          center: ["50%","50%"]
+	      	}
+	    	},
+	      series: [{
+	        name: "Normalized Weight",
+	        colorByPoint: true,
+	        data: [{
+	          name: met1,
+	          y: w1
+	        }, {
+	       		name: met2,
+	        	y: w2,
+	        	sliced: true,
+	        	selected: true
+	        }, {
+	        	name: met3,
+	            y: w3
+	        }]
+	      }]
+	    };
+
+	    $('#container').highcharts(options);
+	  });
+
+		//Reset weights
+		$('#resetweights').click(function(){
+			$('#AlternativeDescriptions').hide();
+			$('#weight1').val("");
+			$('#weight2').val("");
+			$('#weight3').val("");
+			$('#rank1').val("");
+			$('#rank2').val("");
+			$('#rank3').val("");
+			$('#normweight1').val("");
+			$('#normweight2').val("");
+			$('#normweight3').val("");
+		});
+
+		//Function to pass hidden fields to the cost page
+		$('#saveAlt').click(function() {
+			$('#firstAltern').val($('#alt1').val());
+			$('#secondAltern').val($('#alt2').val());
+			$('#thirdAltern').val($('#alt3').val());
+		});
+
+		//Reset alternatives
+		$('#resetAlt').click(function() {
+			$('#alt1').val("");
+			$('#alt2').val("");
+			$('#alt3').val("");
+		});
+
+	});
+	</script>
+</html>

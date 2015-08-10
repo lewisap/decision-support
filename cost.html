@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>AOA Decision Process</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+  </head>
+
+
+  <body>
+    <h1>AOA Decision Process</h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">MODA</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="value.html">Value Model</a></li>
+            <li class="active"><a href="cost.html">Cost Model<span class="sr-only">(current)</span></a></li>
+            <li class="disabled"><a>Display/Calculations</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Home Page</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!--END NAVIGATION BAR -->
+
+    <!-- Sidebar -->
+    <div class="span3 bs-docs-sidebar">
+      <nav id="myScrollspy">
+        <ul class="nav nav-list bs-docs-sidenav affix">
+          <li><a href="#CostSummary"><i class="icon-chevron-right"></i>Cost Summary</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- END SIDEBAR -->
+
+    <div id="wrapper">
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <!--START COST SUMMARY SECTION -->
+              <div id="CostSummary">
+                <h2>Cost Summary</h2>
+                <p>The objective of this step is to determine the monetary total cost of each previously listed alternative. Costs should reflect the material cost, integration cost, and research and development cost for each alternative. For the sake of this demo, all costs will be reflected in a single total monetary value.</p>
+                <br>
+                <form name="CostSummary">
+                  <table border="1" align="center">
+                    <tr>
+                    <td><center><b>Alternatives</b></center></td>
+                    <td><center><b>Total Cost (USD)</b></center></td>    
+                    </tr>
+                    <tr>
+                    <td><input name="altern1" id="altern1" style="text-align: center" disabled></td>
+                    <td><center><input id="altern1cost" placeholder="Enter cost" style="text-align: center"></center></td>    
+                    </tr>
+                    <tr>
+                    <td><input name="altern2" id="altern2" style="text-align: center" disabled></td>
+                    <td><input id="altern2cost" placeholder="Enter cost" style="text-align: center"></td>    
+                    </tr>
+                    <tr>
+                    <td><input name="altern3" id="altern3" style="text-align: center" disabled></td>
+                    <td><input id="altern3cost" placeholder="Enter cost" style="text-align: center"></td>    
+                    </tr>
+                  </table>
+                  <br>
+                  <br>
+                  
+                  <!--SAVE AND RESET BUTTONS -->
+                  <input id="saveCost" type="button" class="btn-sm btn-success pull-right" style="margin-right: 40px" value="Save Costs">
+                  <input id="resetCost" type="button" class="btn-sm btn-danger pull-right" value="Reset Costs" style="margin-right: 20px">
+                </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>              
+              </div>
+              <!-- END COST SUMMARY SECTION -->
+
+            </div> <!--end col-lg-12 page width -->
+          </div> <!-- End row tag -->
+        </div> <!-- End container-fluid -->
+
+        <!-- Button to continue to Dislay Model -->
+        <a class="btn btn-default pull-right" href="display.html" role="button">Finish Cost Model</a>
+
+      </div> <!-- End page-content-wrapper -->
+    </div> <!-- End wrapper -->
+  </body>
+
+  <script>
+      //function to retrieve data by element name
+      function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+          var results = regex.exec(location.search);
+          
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      $( document ).ready(function() {
+          // Fill in data passed from value.html page
+          var val1 = getParameterByName("firstAltern");
+          var val2 = getParameterByName("secondAltern");
+          var val3 = getParameterByName("thirdAltern");
+          $("#altern1").val(val1);
+          $("#altern2").val(val2);
+          $("#altern3").val(val3);
+
+        $('#resetCost').click(function(){
+          $('#altern1cost').val("");
+          $('#altern2cost').val("");
+          $('#altern3cost').val("");
+        });
+
+      });
+  </script>
+
+</html>
