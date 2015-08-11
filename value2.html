@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>AOA Decision Process</title>
+
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/custom2.css" rel="stylesheet">
+
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="170">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+
+    <!-- Top Navigation Bar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="topnavbar" style="width:100%">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">MODA</a>
+            </div>
+            <!-- Nav Links for High Level Steps -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="value.html">Value Model<span class="sr-only">(current)</span></a></li>
+                    <li class="disabled"><a>Cost Model</a></li>
+                    <li class="disabled"><a>Display/Calculations</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <!-- /.navbar-collapse -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- END NAVIGATION BAR -->
+
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <blockquote style="font-size:14px">
+                <p>The objective of this step is for the decision maker to develop and/or review the metrics. Each metric will "measure" the effectiveness for each alternative.</p>
+
+                <p>The decision maker should define the following for each metric: the supported objective, goal of the metric, assumptions relating to the metric, considerations that provide fuller context or understanding of the metric, and the specific numerics measured by the metric.</p>
+
+                <small>For this demo, the number of metrics is fixed at 3.</small>
+            </blockquote>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="step panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Metric Definition</h3>
+                </div>
+                <div class="well">
+                    <ul class="nav nav-pills center-pills" id="savedMetrics">
+                        <!-- <li class="active"><a href="#">Home</a></li> -->
+                    </ul>
+                    <form class="form-horizontal" style="padding-top:15px" id="frmMetrics">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="metricName" class="col-lg-2 control-label">Metric Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="metricName" placeholder="Name for the metric you wish to ...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtObjective" class="col-lg-2 control-label">Objective</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control" rows="3" id="txtObjective"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtGoal" class="col-lg-2 control-label">Goal</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control" rows="3" id="txtGoal"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtAssumptions" class="col-lg-2 control-label">Assumptions</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control" rows="3" id="txtAssumptions"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtConsiderations" class="col-lg-2 control-label">Considerations</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control" rows="3" id="txtConsiderations"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                    <button id="addMetric" type="button" class="btn btn-primary">Add Metric</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="step panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Metric Prioritization</h3>
+                </div>
+                <div class="well">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Legend</legend>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="step panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Alternative Descriptions</h3>
+                </div>
+                <div class="well">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Legend</legend>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+
+            <button type="button" class="action back btn btn-info">Back</button>
+            <button type="button" class="action next btn btn-info">Next</button>
+            <button type="button" class="action submit btn btn-success">Submit</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var current = 1;
+
+            widget = $(".step");
+            btnnext = $(".next");
+            btnback = $(".back");
+            btnsubmit = $(".submit");
+
+            // Init buttons and UI
+            widget.not(':eq(0)').hide();
+            hideButtons(current);
+            setProgress(current);
+
+            // Next button click action
+            btnnext.click(function () {
+                if (current < widget.length) {
+                    widget.show();
+                    widget.not(':eq(' + (current++) + ')').hide();
+                    setProgress(current);
+                }
+                hideButtons(current);
+            })
+
+            // Back button click action 	
+            btnback.click(function () {
+                if (current > 1) {
+                    current = current - 2;
+                    btnnext.trigger('click');
+                }
+                hideButtons(current);
+            })
+        });
+
+        // Change progress bar action
+        setProgress = function (currstep) {
+            var percent = parseFloat(100 / widget.length) * currstep;
+            percent = percent.toFixed();
+            $(".progress-bar")
+                .css("width", percent + "%")
+                .html(percent + "%");
+        }
+
+        // Hide buttons according to the current step
+        hideButtons = function (current) {
+            var limit = parseInt(widget.length);
+
+            $(".action").hide();
+
+            if (current < limit) btnnext.show();
+            if (current > 1) btnback.show();
+            if (current == limit) {
+                btnnext.hide();
+                btnsubmit.show();
+            }
+        }
+        
+        // save the metric to hidden fields and manage the form appropriately
+        $('#addMetric').click(function(e) {
+            var name = $('#metricName').val();
+            var list = $('#savedMetrics');
+            list.append('<li class="active"><a href="#">' + name + '</a></li>');
+            
+            var numSavedItems = $("#savedMetrics li").length;
+            
+            // disable the add button once we hit 3 saved metrics
+            if (numSavedItems >= 3) {
+                $(this).prop("disabled",true);
+            }
+            
+            $("#frmMetrics").trigger('reset');
+        });
+    </script>
+</body>
+
+</html>
