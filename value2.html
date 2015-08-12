@@ -15,14 +15,8 @@
 </head>
 
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="170">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-
     <!-- Top Navigation Bar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="topnavbar" style="width:100%">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="topnavbar" style="width:100%">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand">MODA</a>
@@ -36,28 +30,34 @@
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control  input-sm" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
             <!-- /.navbar-collapse -->
-
         </div>
         <!-- /.container-fluid -->
-    </div>
+    </nav>
     <!-- END NAVIGATION BAR -->
-
-    <div class="container">
-        <div class="col-md-10 col-md-offset-1">
+    
+    <div class="jumbotron" id="divTitle">
+        <div class="container">
             <blockquote style="font-size:14px">
                 <p>The objective of this step is for the decision maker to develop and/or review the metrics. Each metric will "measure" the effectiveness for each alternative.</p>
 
                 <p>The decision maker should define the following for each metric: the supported objective, goal of the metric, assumptions relating to the metric, considerations that provide fuller context or understanding of the metric, and the specific numerics measured by the metric.</p>
 
-                <small>For this demo, the number of metrics is fixed at 3.</small>
+                <small class="text-info">For this demo, the number of metrics is fixed at 3.</small>
+                
+                <br/><p><button type="button" class="btn btn-success" id="btnStart">Start</button></p>
             </blockquote>
+        </div>
+    </div>
 
+    <div class="container" style="display:none" id="divWorksheet">
+        <div class="col-md-10 col-md-offset-1">
+            
             <div class="progress">
                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
@@ -70,11 +70,6 @@
                     <div class="list-group" style="padding-top:15px; padding-left:15px;float:right;display:none;" id="savedMetrics">
                       <a class="list-group-item active">Saved Metrics</a>
                     </div>
-                    
-                    <!--<ul class="nav nav-pills nav-stacked" id="savedMetrics" style="padding-top:15px; padding-left:15px;float:right;">
-                        <li><a href="#">Saved Metrics</a></li>
-                        <li class="active"><a href="#">Home</a></li>
-                    </ul>-->
                     <form class="form-horizontal" style="padding-top:15px;" id="frmMetrics">
                         <fieldset>
                             <div class="form-group">
@@ -177,88 +172,21 @@
                     </form>
                 </div>
             </div>
-
-
-            <button type="button" class="action back btn btn-info">Back</button>
-            <button type="button" class="action next btn btn-info">Next</button>
-            <button type="button" class="action submit btn btn-success">Submit</button>
+            
+            <form action="cost.html">
+                <input type="hidden" name="test" value="something"/>
+                
+                <button type="button" class="action back btn btn-success">Back</button>
+                <button type="button" class="action next btn btn-success">Next</button>
+                <button type="submit" class="action submit btn btn-success">Submit</button>
+            </form>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var current = 1;
-
-            widget = $(".step");
-            btnnext = $(".next");
-            btnback = $(".back");
-            btnsubmit = $(".submit");
-
-            // Init buttons and UI
-            widget.not(':eq(0)').hide();
-            hideButtons(current);
-            setProgress(current);
-
-            // Next button click action
-            btnnext.click(function () {
-                if (current < widget.length) {
-                    widget.show();
-                    widget.not(':eq(' + (current++) + ')').hide();
-                    setProgress(current);
-                }
-                hideButtons(current);
-            })
-
-            // Back button click action 	
-            btnback.click(function () {
-                if (current > 1) {
-                    current = current - 2;
-                    btnnext.trigger('click');
-                }
-                hideButtons(current);
-            })
-        });
-
-        // Change progress bar action
-        setProgress = function (currstep) {
-            var percent = parseFloat(100 / widget.length) * currstep;
-            percent = percent.toFixed();
-            $(".progress-bar")
-                .css("width", percent + "%")
-                .html(percent + "%");
-        }
-
-        // Hide buttons according to the current step
-        hideButtons = function (current) {
-            var limit = parseInt(widget.length);
-
-            $(".action").hide();
-
-            if (current < limit) btnnext.show();
-            if (current > 1) btnback.show();
-            if (current == limit) {
-                btnnext.hide();
-                btnsubmit.show();
-            }
-        }
-        
-        // save the metric to hidden fields and manage the form appropriately
-        $('#addMetric').click(function(e) {
-            var name = $('#metricName').val();
-            var list = $('#savedMetrics');
-            list.show();
-            list.append('<a href="#" class="list-group-item">' + name + '</a>');
-            
-            var numSavedItems = $("#savedMetrics [href]").length;
-            
-            // disable the add button once we hit 3 saved metrics
-            if (numSavedItems >= 3) {
-                $(this).prop("disabled",true);
-            }
-            
-            $("#frmMetrics").trigger('reset');
-        });
-    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="js/value.js"></script>
 </body>
 
 </html>
