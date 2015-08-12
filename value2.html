@@ -67,9 +67,12 @@
                     <h3 class="panel-title">Metric Definition</h3>
                 </div>
                 <div class="well">
+                    <!-- saved metrics list -->
                     <div class="list-group" style="padding-top:15px; padding-left:15px;float:right;display:none;" id="savedMetrics">
                       <a class="list-group-item active">Saved Metrics</a>
                     </div>
+                    
+                    
                     <form class="form-horizontal" style="padding-top:15px;" id="frmMetrics">
                         <fieldset>
                             <div class="form-group">
@@ -174,11 +177,11 @@
             </div>
             
             <form action="cost.html">
-                <input type="hidden" name="test" value="something"/>
+                <input type="hidden" name="uid" value="example.json"/>
                 
                 <button type="button" class="action back btn btn-success">Back</button>
                 <button type="button" class="action next btn btn-success">Next</button>
-                <button type="submit" class="action submit btn btn-success">Submit</button>
+                <button type="submit" id="btnSubmit" class="action submit btn btn-success">Submit</button>
             </form>
         </div>
     </div>
