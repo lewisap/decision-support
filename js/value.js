@@ -1,4 +1,7 @@
-var current, widget, btnnext, btnback, btnsubmit;
+/*jslint browser: true*/
+/*global $, jQuery, alert*/
+
+var current, widget, btnNext, btnStart, btnBack, btnSubmit, btnAddMetric, btnCalcWeights, btnContinue, frmContinue;
 var savedMetrics = [];
 
 var hideButtons = function (current) {
@@ -8,16 +11,16 @@ var hideButtons = function (current) {
     $(".action").hide();
 
     if (current < limit) {
-        btnnext.show();
+        btnNext.show();
     }
 
     if (current > 1) {
-        btnback.show();
+        btnBack.show();
     }
 
     if (current === limit) {
-        btnnext.hide();
-        btnsubmit.show();
+        btnNext.hide();
+        btnSubmit.show();
     }
 };
 
@@ -26,6 +29,7 @@ var setProgress = function (currstep) {
     "use strict";
     var percent = parseFloat(100 / widget.length) * currstep;
     percent = percent.toFixed();
+    
     $(".progress-bar")
         .css("width", percent + "%")
         .html(percent + "% Complete");
@@ -34,11 +38,17 @@ var setProgress = function (currstep) {
 $(document).ready(function () {
     "use strict";
 
+    // set up our obj references
     current = 1;
     widget = $(".step");
-    btnnext = $(".next");
-    btnback = $(".back");
-    btnsubmit = $(".submit");
+    btnNext = $(".next");
+    btnBack = $(".back");
+    btnSubmit = $(".submit");
+    btnAddMetric = $("#btnAddMetric");
+    btnCalcWeights = $('#btnCalcWeights');
+    btnContinue = $('#btnContinue');
+    btnStart = $('#btnStart');
+    frmContinue = $('#frmContinue');
 
     // Init buttons and UI
     widget.not(':eq(0)').hide();
@@ -46,7 +56,7 @@ $(document).ready(function () {
     setProgress(current);
 
     // Next button click action
-    btnnext.click(function () {
+    btnNext.click(function () {
         if (current < widget.length) {
             widget.show();
             widget.not(':eq(' + (current++) + ')').hide();
@@ -55,31 +65,32 @@ $(document).ready(function () {
         hideButtons(current);
     });
 
-    // Back button click action 	
-    btnback.click(function () {
+    btnBack.click(function () {
         if (current > 1) {
             current = current - 2;
-            btnnext.trigger('click');
+            btnNext.trigger('click');
         }
         hideButtons(current);
     });
 
     // save the metric to JS array
-    $('#addMetric').click(function (e) {
-        var name = $('#metricName').val();
-        var objective = $('#txtObjective').val();
-        var goal = $('#txtGoal').val();
-        var assumptions = $('#txtAssumptions').val();
-        var considerations = $('#txtConsiderations').val();
+    btnAddMetric.click(function (e) {
+        var name, objective, goal, assumptions, considerations, list, numSavedItems, metric;
 
-        var list = $('#savedMetrics');
-        var numSavedItems = $("#savedMetrics [href]").length;
+        name = $('#metricName').val();
+        objective = $('#txtObjective').val();
+        goal = $('#txtGoal').val();
+        assumptions = $('#txtAssumptions').val();
+        considerations = $('#txtConsiderations').val();
+
+        list = $('#savedMetrics');
+        numSavedItems = $("#savedMetrics [href]").length;
 
         list.show();
         list.append('<a href="#" class="list-group-item savedMetric" id="metric-' + numSavedItems + '">' + name + '</a>');
 
         // save the metric to the metrics JS array as an object
-        var metric = {};
+        metric = {};
         metric.name = name;
         metric.objective = objective;
         metric.goal = goal;
@@ -98,9 +109,11 @@ $(document).ready(function () {
 
     // click handler for user selecing an already saved metric
     $('#savedMetrics').on('click', 'a', function () {
-        var arrNum = $(this).attr('id').split('-')[1];
-        var obj = savedMetrics[arrNum];
+        var arrNum, obj;
         
+        arrNum = $(this).attr('id').split('-')[1];
+        obj = savedMetrics[arrNum];
+
         $('#metricName').val(obj.name);
         $('#txtObjective').val(obj.objective);
         $('#txtGoal').val(obj.goal);
@@ -108,20 +121,30 @@ $(document).ready(function () {
         $('#txtConsiderations').val(obj.considerations);
     });
 
-    $('#btnStart').click(function (e) {
+    btnStart.click(function (e) {
         $('#divTitle').hide();
         $('#divWorksheet').show("fast");
     });
 
-    $('#btnSubmit').click(function (e) {
-        e.preventDefault(); // don't auto-submit the form and navigate on
+    btnSubmit.click(function (e) {
         $.ajax({
             type: "PUT",
             contentType: 'application/json',
             url: "/v1/documents?uri=example.json",
-            data: JSON.stringify(savedMetrics),
-        }).done(function (msg) {
-            alert("Your data has been saved to the server");
+            data: JSON.stringify(savedMetrics)
+        }).success(function (msg) {
+            //alert("Your data has been saved to the server");
+            $('#alertSaveSuccess').show();
+        }).error(function (msg) {
+            $('#alertSaveError').show();
         });
+    });
+
+    btnCalcWeights.click(function (e) {
+        alert('placeholder functionality');
+    });
+    
+    btnContinue.click(function (e) {
+        frmContinue.submit();
     });
 });

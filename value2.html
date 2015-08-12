@@ -40,7 +40,7 @@
         <!-- /.container-fluid -->
     </nav>
     <!-- END NAVIGATION BAR -->
-    
+
     <div class="jumbotron" id="divTitle">
         <div class="container">
             <blockquote style="font-size:14px">
@@ -49,14 +49,27 @@
                 <p>The decision maker should define the following for each metric: the supported objective, goal of the metric, assumptions relating to the metric, considerations that provide fuller context or understanding of the metric, and the specific numerics measured by the metric.</p>
 
                 <small class="text-info">For this demo, the number of metrics is fixed at 3.</small>
-                
-                <br/><p><button type="button" class="btn btn-success" id="btnStart">Start</button></p>
+
+                <br/>
+                <p>
+                    <button type="button" class="btn btn-success" id="btnStart">Start</button>
+                </p>
             </blockquote>
         </div>
     </div>
 
     <div class="container" style="display:none" id="divWorksheet">
         <div class="col-md-10 col-md-offset-1">
+
+            <div class="alert alert-success fade in clearfix" id="alertSaveSuccess" style="display:none;">
+                <strong>Success!</strong> The Metrics have been saved to the database.
+                <button class="btn btn-primary pull-right" id="btnContinue">Continue</button>
+            </div>
+            
+            <div class="alert alert-danger fade in clearfix" id="alertSaveError" style="display:none;">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong>Error!</strong> Something went wrong, check the logs.
+            </div>
             
             <div class="progress">
                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -69,10 +82,10 @@
                 <div class="well">
                     <!-- saved metrics list -->
                     <div class="list-group" style="padding-top:15px; padding-left:15px;float:right;display:none;" id="savedMetrics">
-                      <a class="list-group-item active">Saved Metrics</a>
+                        <a class="list-group-item active">Saved Metrics</a>
                     </div>
-                    
-                    
+
+
                     <form class="form-horizontal" style="padding-top:15px;" id="frmMetrics">
                         <fieldset>
                             <div class="form-group">
@@ -108,7 +121,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <button type="reset" class="btn btn-default">Cancel</button>
-                                    <button id="addMetric" type="button" class="btn btn-primary">Add Metric</button>
+                                    <button id="btnAddMetric" type="button" class="btn btn-primary">Add Metric</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -123,23 +136,40 @@
                 <div class="well">
                     <form class="form-horizontal">
                         <fieldset>
-                            <legend>Legend</legend>
                             <div class="form-group">
-                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
+                                <table class="table table-striped table-hover ">
+                                    <thead>
+                                        <tr>
+                                            <th>Metric</th>
+                                            <th>Rank</th>
+                                            <th>Relative Weight</th>
+                                            <th>Normalized Weight</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td><input type="text" class="form-control input-sm" id="" placeholder="Enter Weight"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td></td>
+                                            <td><input type="text" class="form-control input-sm" id="" placeholder="Enter Weight"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td></td>
+                                            <td><input type="text" class="form-control input-sm" id="" placeholder="Enter Weight"></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                                <div class="col-lg-10">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Checkbox
-                                        </label>
-                                    </div>
-                                </div>
+                                <button id="btnCalcWeights" type="button" class="btn btn-primary">Calculate Weights</button>
                             </div>
                         </fieldset>
                     </form>
@@ -175,17 +205,17 @@
                     </form>
                 </div>
             </div>
-            
-            <form action="cost.html">
-                <input type="hidden" name="uid" value="example.json"/>
-                
+
+            <form id="frmContinue" action="cost.html">
+                <input type="hidden" name="uid" value="example.json" />
+
                 <button type="button" class="action back btn btn-success">Back</button>
                 <button type="button" class="action next btn btn-success">Next</button>
-                <button type="submit" id="btnSubmit" class="action submit btn btn-success">Submit</button>
+                <button type="button" id="btnSubmit" class="action submit btn btn-success">Submit</button>
             </form>
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
